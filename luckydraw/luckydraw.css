@@ -1,0 +1,18 @@
+.ld-luckydraw{
+	position:relative;
+	overflow:hidden;
+}
+.ld-bottomdiv{
+	overflow:hidden;
+}
+.ld-middlediv{
+	position:absolute;
+	top:0;
+	left:0;
+	overflow:hidden;
+}
+.ld-topcanvas{
+	position:absolute;
+	top:0;
+	left:0;
+}
