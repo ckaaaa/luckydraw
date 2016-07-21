@@ -16,16 +16,16 @@
 		c.height *= c.ratio;
 		c.width *= c.ratio;
 		c.mainId = '#'+$(this).attr('id');
-		$(c.mainId).addClass('ld-luckydraw').height(c.height).width(c.width);
+		$(c.mainId).addClass('ld-luckydraw').height(c.height/c.ratio).width(c.width/c.ratio);
 		var IDbottomdiv = 'ld-bottomdiv'+ (Math.random() * 100000).toFixed(0);
 		var IDmiddlediv = 'ld-middlediv'+ (Math.random() * 100000).toFixed(0);
 		var IDtopcanvas = 'ld-topcanvas'+ (Math.random() * 100000).toFixed(0);
-		var sHtml = '<div class="ld-bottomdiv" id="'+IDbottomdiv+'" style="height:'+c.height+'px;width:'+c.width+'px;background:'+c.bottomBkg+';"></div><div id="'+IDmiddlediv+'" class="ld-middlediv" style="height:'+c.height+'px;width:'+c.width+'px;background:'+c.middleBkg+'"></div><canvas class="ld-topcanvas" style="height:'+(c.height/c.ratio)+'px;width:'+(c.width/c.ratio)+'px;" id="'+IDtopcanvas+'" height="'+c.height+'" width="'+c.width+'"></canvas>';
+		var sHtml = '<div class="ld-bottomdiv" id="'+IDbottomdiv+'" style="height:'+(c.height/c.ratio)+'px;width:'+(c.width/c.ratio)+'px;background:'+c.bottomBkg+';"></div><div id="'+IDmiddlediv+'" class="ld-middlediv" style="height:'+(c.height/c.ratio)+'px;width:'+(c.width/c.ratio)+'px;background:'+c.middleBkg+'"></div><canvas class="ld-topcanvas" style="height:'+(c.height/c.ratio)+'px;width:'+(c.width/c.ratio)+'px;" id="'+IDtopcanvas+'" height="'+c.height+'" width="'+c.width+'"></canvas>';
 		$(c.mainId).html(sHtml);
 		var canvas = document.getElementById(IDtopcanvas);
 		var mainwrap = $(c.mainId)[0];
-		canvas.style.height = c.height;
-		canvas.style.width = c.width;
+		canvas.style.height = c.height/c.ratio;
+		canvas.style.width = c.width/c.ratio;
 		
 		
 		var POS = {left:mainwrap.offsetLeft,top:mainwrap.offsetTop};
