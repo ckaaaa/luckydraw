@@ -10,14 +10,17 @@
 			topBkg:'#F93288',
 			startFun:null,
 			compelteFun :null,
+			ratio:2
 		};
 		var c = $.extend(defaults, options);
+		c.height *= c.ratio;
+		c.width *= c.ratio;
 		c.mainId = '#'+$(this).attr('id');
 		$(c.mainId).addClass('ld-luckydraw').height(c.height).width(c.width);
 		var IDbottomdiv = 'ld-bottomdiv'+ (Math.random() * 100000).toFixed(0);
 		var IDmiddlediv = 'ld-middlediv'+ (Math.random() * 100000).toFixed(0);
 		var IDtopcanvas = 'ld-topcanvas'+ (Math.random() * 100000).toFixed(0);
-		var sHtml = '<div class="ld-bottomdiv" id="'+IDbottomdiv+'" style="height:'+c.height+'px;width:'+c.width+'px;background:'+c.bottomBkg+';"></div><div id="'+IDmiddlediv+'" class="ld-middlediv" style="height:'+c.height+'px;width:'+c.width+'px;background:'+c.middleBkg+'"></div><canvas class="ld-topcanvas" style="height:'+c.height+'px;width:'+c.width+'px;" id="'+IDtopcanvas+'" height="'+c.height+'" width="'+c.width+'"></canvas>';
+		var sHtml = '<div class="ld-bottomdiv" id="'+IDbottomdiv+'" style="height:'+c.height+'px;width:'+c.width+'px;background:'+c.bottomBkg+';"></div><div id="'+IDmiddlediv+'" class="ld-middlediv" style="height:'+c.height+'px;width:'+c.width+'px;background:'+c.middleBkg+'"></div><canvas class="ld-topcanvas" style="height:'+(c.height/c.ratio)+'px;width:'+(c.width/c.ratio)+'px;" id="'+IDtopcanvas+'" height="'+c.height+'" width="'+c.width+'"></canvas>';
 		$(c.mainId).html(sHtml);
 		var canvas = document.getElementById(IDtopcanvas);
 		var mainwrap = $(c.mainId)[0];
@@ -26,7 +29,7 @@
 		
 		
 		var POS = {left:mainwrap.offsetLeft,top:mainwrap.offsetTop};
-		var L = 15;
+		var L = 15*c.ratio;
 		var R = (Math.sqrt(2) * L ).toFixed(0);
 		var MPS = [{x:((c.width / 2 - (c.width / 2) * 0.2).toFixed(0)) * 1,y:(c.height / 2),f:0},{x:(c.width / 2),y:(c.height / 2),f:0},{x:((c.width / 2 + (c.width / 2) * 0.2).toFixed(0)) * 1,y:(c.height / 2),f:0}];
 		var cans = canvas.getContext('2d');
@@ -69,8 +72,8 @@
 			if(flag && e.touches.length == 1){
 				var X = e.touches[0].pageX - POS.left
 				var Y = e.touches[0].pageY - POS.top;
-				X = X * 1.22;
-				Y = Y *1.1;
+				X = X * 1.22*c.ratio;
+				Y = Y *1.1*c.ratio;
 				//圆的中间正方形先除去.
 				cans.clearRect(X - L, Y - L, L*2, L*2);
 				for(var o = 0 ;o <= 45; o++){
